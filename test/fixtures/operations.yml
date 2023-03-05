@@ -1,0 +1,24 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 9.99
+  odate: 2023-02-15 23:19:52
+  description: MyString
+  category_id: 1
+  otype: доход
+
+two:
+  amount: 9.99
+  odate: 2023-02-15 23:19:52
+  description: MyString
+  category_id: 2
+  otype: витрата
+
+thre:
+  amount: 10.90
+  odate: 2023-03-04 23:19:52
+  description: MyString
+  category_id: 3
+  otype: витрата
+
+

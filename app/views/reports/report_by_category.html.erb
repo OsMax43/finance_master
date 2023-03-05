@@ -1,0 +1,82 @@
+ 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<div class="container" id = "report">
+
+  <h3 align ="center ">Звіт за період з <%= @s_date %> по <%= @e_date %>
+   по статті <%= @otype.upcase%></h3>
+
+
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Категорія</th>
+      <th>Сума</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% sum = 0 %>
+    <% @operations.each do |cat, amount| %>
+      <tr>
+        <td><%= cat %></td>
+        <td><%= amount.round(2) %></td>
+        <% sum += amount %>
+      </tr>
+    <% end %>
+      
+      
+    <tr class="info">
+      <td colspan="7"><strong>Всього: <%= sum.round(2) %>  грн.</strong></td>
+    </tr>
+  </tbody>
+</table>
+  
+</div>
+
+
+<div id = "chart">
+  <canvas id="myChart"></canvas>
+  
+</div>
+
+
+<script>
+  
+  const ctx = document.getElementById('myChart');
+
+  const data = {
+    labels: <%= raw @cat%>,
+    datasets: [{
+      label: 'Report by category',
+      data: <%= raw @amount%>,
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+         'rgb(255, 0, 0)',
+         'rgb(51, 51, 255)',
+         'rgb(51, 255, 64)',
+         'rgb(51, 255, 255)',
+         'rgb(175, 157, 157)',
+         'rgb(153, 153, 255)',
+         'rgb(255, 128, 0)',
+         'rgb(38, 77, 0)' ,
+         'rgb(255, 77, 255)'
+
+      ],
+      hoverOffset: 4
+    }]
+  };
+  
+  const config = {
+     type: 'doughnut',
+     data: data,
+     
+   };
+
+   const myChart = new Chart(ctx, config);
+  
+
+</script>

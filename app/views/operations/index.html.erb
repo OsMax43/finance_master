@@ -1,0 +1,52 @@
+<div class="container">
+  <h1 align ="center ">Operations:
+  <%= @operations.count%>
+  /
+  <%= Operation.count%>
+  </h1>
+
+<%== pagy_bootstrap_nav(@pagy) %>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Категорія</th>
+        <th>Тип операції</th>
+        <th>Сума</th>
+        <th>Дата</th>
+        <th>Опис</th>
+        <th>Управління</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% sum = 0 %>
+      <% @operations.each do |operation|%>
+        <tr>
+          <td><%= operation.id %></td>
+          <td><%= Category.find(operation.category_id).name  %></td>
+          <td><%= operation.otype %></td>
+          <td><%= operation.amount %></td>
+          <td><%= operation.odate.strftime('%d.%m.%Y') %></td>
+          <td><%= operation.description %></td>
+          <% sum += operation.amount %>
+          <td>
+            <table style="width:100%">
+            <tr>
+            <td style="width:50%"><%=button_to "", operation, class: "bi bi-trash3 btn btn-danger btn-sm", method: :delete, type: "button" %></td>
+            <td><%=link_to "", edit_operation_path(operation), class: "bi bi-pencil-square btn btn-secondary btn-sm", type: "button" %></td>
+            </tr>
+            </table>
+          </td>
+        </tr>
+      <% end %>
+      
+      
+        <tr class="info">
+            <td colspan="7"><strong>Сума на сторінці: <%= sum %>  грн. </strong></td>
+        </tr>
+    </tbody>
+  </table>
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
+

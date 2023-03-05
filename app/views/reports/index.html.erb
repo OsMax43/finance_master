@@ -1,0 +1,48 @@
+
+
+<div class="container">
+  <h2 align = "center">Генератор звітів</h2>
+
+
+  <div class="card  p-4">
+    <%= form_with url: reports_report_by_category_path, method: :get do |f| %>
+      
+      <div class="row mb-3">
+        <%= f.label :category_id, 'Назва категорії', class: "col-sm-2 col-form-label" %>
+        
+        <div class="col-sm-2">
+          <%= f.collection_select :category_id, Category.all.order(:name), :id, :name, class: "form-control", prompt: " " %>
+        </div>
+      </div>
+      
+      <div class="row mb-3">
+        <%= f.label :otype, 'Тип операції', class: "col-sm-2 col-form-label" %>
+        <div class="col-sm-3">
+          <%= f.select :otype, ['витрата', 'доход'], class: "form-control" %>
+        </div>
+      </div>
+
+            
+      <div class="row mb-3">
+        <%= f.label :s_date, 'Дата початку', class: "col-sm-2 col-form-label"  %>
+        <div class="col-sm-2">
+          <%= f.date_field :s_date, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <%= f.label :e_date, 'Дата кінця', class: "col-sm-2 col-form-label"  %>
+        <div class="col-sm-2">
+          <%= f.date_field :e_date, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class= "fs-4 mb-3">
+        <%= f.submit 'Звіт по категоріям', class: "btn btn-primary"%>
+        <%= button_tag 'Очистити', type: 'reset', class: "btn btn-primary"%>
+        <%= f.submit 'Звіт по датам', formaction: reports_report_by_dates_path, class: "btn btn-primary"%>
+      </div>
+      
+    <% end %>
+  </div>
+</div>

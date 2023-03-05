@@ -1,0 +1,33 @@
+<%= render 'shared/errors', object: @category %>
+
+<div class="container">
+  <h2 align ="center ">Реєстрація/Редагування інформації про категорію доходів / витрат</h2>
+
+
+  <div class="card mt-4 me-4 ms-4 p-4">
+    <%= form_with model: @category do |f| %>
+      
+      <div class="row mb-4">
+        <%= f.label :name, 'Назва категорії', class: "col-sm-2 col-form-label" %>
+        <div class="col-sm-3">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+        
+      
+
+      <div class="row mb-4">
+        <%= f.label :description, 'Короткий опис', class: "col-sm-2 col-form-label"  %>
+        <div class="col-sm-5">
+          <%= f.text_field :description, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class= "p-2">
+        <%= f.submit 'Додати', class: "btn btn-primary"%>
+        <%= button_tag 'Очистити', type: 'reset', class: "btn btn-primary"%>
+      
+      </div>
+    <% end %>
+  </div>
+</div>

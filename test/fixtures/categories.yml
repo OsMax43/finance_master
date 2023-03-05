@@ -1,0 +1,30 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+cats_1:
+  id: 1
+  name: Mycat1
+  description: MyCat1
+
+cats_2:
+  id: 2
+  name: Mycat2
+  description: MyCat2  
+
+
+cats_3:
+  id: 3
+  name: Mycat3
+  description: MyCat3
+
+cats_4:
+  id: 4
+  name: Mycat4
+  description: MyCat4
+
+cats_5:
+  id: 5
+  name: Mycat5
+  description: MyCat2
+  
+
+
