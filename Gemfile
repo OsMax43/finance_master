@@ -26,9 +26,9 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem "faker"
 
-
-gem 'pagy', '~> 6.0' # omit patch digit
+gem "pagy", '~> 6.0' # omit patch digit
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -73,7 +73,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem "pg"
 end
 
 
@@ -82,5 +82,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'faker'
+  
 end
