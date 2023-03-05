@@ -21,5 +21,12 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: database-1
+  host: database-1.cjmn1avatkbo.eu-central-1.rds.amazonaws.com
+  port: 5432
+  username: postgres
+  password: <%= ENV['RAILS_DB_PASS'] %>
+
+
