@@ -23,8 +23,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: database-1
-  host: database-1.cjmn1avatkbo.eu-central-1.rds.amazonaws.com
+  database: finance_master
+  host: database-2.cjmn1avatkbo.eu-central-1.rds.amazonaws.com
   port: 5432
   username: postgres
   password: <%= ENV['RAILS_DB_PASS'] %>
