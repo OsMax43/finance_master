@@ -19,14 +19,14 @@
         <%= f.label :otype, 'Тип операції', class: "col-sm-2 col-form-label" %>
         <div class="col-sm-3">
           
-          <%= f.select :otype, ["Витрата", "Доход"], class: "form-control" %>
+          <%= f.select :otype, ["витрата", "доход"], class: "form-control" %>
         </div>
       </div>
 
       <div class="row mb-3">
         <%= f.label :amount, 'Сума', class: "col-sm-2 col-form-label" %>
         <div class="col-sm-2">
-          <%= f.number_field :amount, class: "form-control" %>
+          <%= f.text_field :amount, class: "form-control" %>
         </div>
       </div>
       
