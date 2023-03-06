@@ -3,5 +3,11 @@
   <p>
     <h1>Finance Master</h1>
     <%= Date.today.strftime('%d.%m.%Y') %>
+    <div class = "mt-4">
+    Витрати за поточний мiсяць <%= @outgo %> грн.
+    </div>
+    <div>
+    Доходи за поточний мiсяць <%= @income %> грн.
+    </div>
   </p>
 </div>
