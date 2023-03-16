@@ -48,9 +48,6 @@ class OperationsController < ApplicationController
     params.require(:operation).permit(:amount, :description, :odate, :otype, :category_id)
   end
 
-  # def category_select
-    
-  #   @category_select = Category.pluck(:id, :name)
-  # end
+  
 
 end

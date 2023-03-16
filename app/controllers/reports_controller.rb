@@ -6,31 +6,19 @@ class ReportsController < ApplicationController
     
   def report_by_category
     if @cat == ""
-      @operations = Operation.where("otype = ? ", @otype)
-      .where("odate BETWEEN ? AND ? ", @s_date, @e_date)
-      .group(:category_id).sum(:amount).map do |key, value|
-                                        [Category.find(key).name, value]
-                                        end
-     
-     else
-      @operations = Operation.where("otype = ? AND category_id = ? ", @otype, @cat)
-      .where("odate BETWEEN ? AND ? ", @s_date, @e_date)
-      .group(:category_id).sum(:amount).map do |key, value|
-                                        [Category.find(key).name, value]
-                                        end
+      @operations = Operation.by_category(params[:otype], params[:s_date], params[:e_date] )
+    else
+      @operations = Operation.by_category_full(params[:otype], params[:category_id], params[:s_date], params[:e_date] )
     end
     @cat = @operations.map {|e| e[0] }
     @amount = @operations.map {|e| e[1] }
   end
 
   def report_by_dates
-    
     if @cat == ""
-      @operations = Operation.where("otype = ? ", @otype).where("odate BETWEEN ? AND ? ", @s_date, @e_date)
-      .group(:odate).sum(:amount)
+      @operations = Operation.by_dates(params[:otype], params[:s_date], params[:e_date])
     else
-      @operations = Operation.where("otype = ? AND category_id = ? ", @otype, @cat).where("odate BETWEEN ? AND ? ", @s_date, @e_date)
-      .group(:odate).sum(:amount)
+      @operations = Operation.by_dates_cat(params[:otype], params[:category_id], params[:s_date], params[:e_date])
     end
     @dat = @operations.map {|e| e[0].strftime('%d.%m.%Y') }
     @amount = @operations.map {|e| e[1] }
